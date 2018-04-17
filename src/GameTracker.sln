@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevChatter.GameTracker", "DevChatter.GameTracker\DevChatter.GameTracker.csproj", "{A001B95E-5DB1-44AF-9E91-06BDD14C3AA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevChatter.GameTracker.Core", "DevChatter.GameTracker.Core\DevChatter.GameTracker.Core.csproj", "{AD5A4CA1-014D-4F3E-97FD-933E1CE287F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A001B95E-5DB1-44AF-9E91-06BDD14C3AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A001B95E-5DB1-44AF-9E91-06BDD14C3AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A001B95E-5DB1-44AF-9E91-06BDD14C3AA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD5A4CA1-014D-4F3E-97FD-933E1CE287F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD5A4CA1-014D-4F3E-97FD-933E1CE287F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD5A4CA1-014D-4F3E-97FD-933E1CE287F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD5A4CA1-014D-4F3E-97FD-933E1CE287F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
