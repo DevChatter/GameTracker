@@ -37,7 +37,6 @@ namespace DevChatter.GameTracker.Data.Ef
 
         public T Update<T>(T dataItem) where T : BaseEntity
         {
-            // do we need this? //_context.Attach(Game).State = EntityState.Modified;
             _db.Set<T>().Update(dataItem);
             _db.SaveChanges();
 

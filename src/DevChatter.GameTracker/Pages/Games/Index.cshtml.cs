@@ -21,7 +21,7 @@ namespace DevChatter.GameTracker.Pages.Games
 
         public void OnGet()
         {
-            Game = _repo.List(BaseEntityPolicy<Game>.All());
+            Game = _repo.List(GamePolicy.All());
         }
     }
 }

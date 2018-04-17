@@ -29,7 +29,7 @@ namespace DevChatter.GameTracker.Pages.Games
                 return NotFound();
             }
 
-            Game = _repo.Single(BaseEntityPolicy<Game>.ById(id.Value));
+            Game = _repo.Single(GamePolicy.ById(id.Value));
 
             if (Game == null)
             {

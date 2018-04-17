@@ -30,7 +30,7 @@ namespace DevChatter.GameTracker.Pages.Games
                 return NotFound();
             }
 
-            Game = _repo.Single(BaseEntityPolicy<Game>.ById(id.Value));
+            Game = _repo.Single(GamePolicy.ById(id.Value));
 
             if (Game == null)
             {
@@ -67,7 +67,7 @@ namespace DevChatter.GameTracker.Pages.Games
 
         private bool GameExists(Guid id)
         {
-            return _repo.Single(BaseEntityPolicy<Game>.ById(id)) != null;
+            return _repo.Single(GamePolicy.ById(id)) != null;
         }
     }
 }
