@@ -4,9 +4,12 @@ using DevChatter.GameTracker.Core.Model;
 
 namespace DevChatter.GameTracker.Core.Data.Specifications
 {
+    /// <summary>
+    /// Used for filtering BaseEntity objects based on specified criteria
+    /// </summary>
     public class BaseEntityPolicy<T> : ISpecification<T> where T : BaseEntity
     {
-        public BaseEntityPolicy(Expression<Func<T, bool>> criteria)
+        protected BaseEntityPolicy(Expression<Func<T, bool>> criteria)
         {
             Criteria = criteria;
         }
