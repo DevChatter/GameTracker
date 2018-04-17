@@ -7,6 +7,7 @@ namespace DevChatter.GameTracker.Data.Ef
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Game> Games { get; set; }
+        public DbSet<Player> Players { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

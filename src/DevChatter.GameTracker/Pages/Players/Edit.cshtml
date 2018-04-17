@@ -1,0 +1,40 @@
+﻿@page
+@model DevChatter.GameTracker.Pages.Players.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Player</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Player.FirstName" class="control-label"></label>
+                <input asp-for="Player.FirstName" class="form-control" />
+                <span asp-validation-for="Player.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Player.LastName" class="control-label"></label>
+                <input asp-for="Player.LastName" class="form-control" />
+                <span asp-validation-for="Player.LastName" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Player.Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
