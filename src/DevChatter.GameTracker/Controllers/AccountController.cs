@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using DevChatter.GameTracker.Data.Ef;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using DevChatter.GameTracker.Data;
+using System.Threading.Tasks;
 
 namespace DevChatter.GameTracker.Controllers
 {

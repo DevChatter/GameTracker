@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DevChatter.GameTracker.Data.Migrations
+namespace DevChatter.GameTracker.Data.Ef.Migrations
 {
     public partial class LetEfCoreChangeThings : Migration
     {

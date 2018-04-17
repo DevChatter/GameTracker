@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DevChatter.GameTracker.Core.Model;
+using DevChatter.GameTracker.Data.Ef;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using DevChatter.GameTracker.Core.Model;
-using DevChatter.GameTracker.Data;
+using System.Threading.Tasks;
 
 namespace DevChatter.GameTracker.Pages.Games
 {
     public class CreateModel : PageModel
     {
-        private readonly DevChatter.GameTracker.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CreateModel(DevChatter.GameTracker.Data.ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context)
         {
             _context = context;
         }

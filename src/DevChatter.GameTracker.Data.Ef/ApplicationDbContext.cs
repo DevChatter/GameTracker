@@ -2,7 +2,7 @@ using DevChatter.GameTracker.Core.Model;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace DevChatter.GameTracker.Data
+namespace DevChatter.GameTracker.Data.Ef
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
