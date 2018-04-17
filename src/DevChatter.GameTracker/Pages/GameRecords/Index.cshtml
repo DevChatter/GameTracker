@@ -25,6 +25,24 @@
                 <span asp-validation-for="GameRecord.GameId" class="text-danger"></span>
             </div>
             <div class="form-group">
+
+                <label asp-for="GameRecord.PlayerIds" class="control-label"></label>
+
+                <select v-model="selectedPlayer"
+                        v-on:change="addNewPlayer"
+                        placeholder="Choose a Player">
+                    <option v-for="player in allPlayers" v-bind:value="player">
+                        {{ player.firstName }} {{ player.lastName }}
+                    </option>
+                </select>
+                <ul>
+                    <li v-for="player in players">
+                        {{ player.firstName }} {{ player.lastName }} <input type="checkbox" v-model="player.won"> <input type="checkbox" v-model="player.taught">
+                    </li>
+                </ul>
+                <span asp-validation-for="GameRecord.PlayerIds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
@@ -40,15 +58,35 @@
             el: '#app',
             data: {
                 gamePlayed: {},
-                players: [
-                    { id: '', FirstName: '', LastName: '' },
-                    { id: '', FirstName: '', LastName: '' }
+                selectedPlayer: {},
+                players: [],
+                allPlayers: [
+                    { id: '1', firstName: 'John', lastName: 'Smith' },
+                    { id: '2', firstName: 'John', lastName: 'Doe' },
+                    { id: '3', firstName: 'John', lastName: 'Cena' },
+                    { id: '4', firstName: 'John', lastName: 'athan' },
+                    { id: '5', firstName: 'John', lastName: 'Williams' },
+                    { id: '6', firstName: 'Henrik', lastName: 'Hagen' },
+                    { id: '7', firstName: 'Brutal', lastName: 'Swede' },
+                    { id: '8', firstName: 'John', lastName: 'Jacob Jinglheimer Smith' }
                 ],
                 games: [
                     { title: 'Game Number 1', id: '1' },
                     { title: 'Game Number 2', id: '2' },
                     { title: 'Game Number 3', id: '3' }
                 ]
+            },
+            methods: {
+                addNewPlayer: function () {
+                    this.players.push({
+                        id: this.selectedPlayer.id,
+                        firstName: this.selectedPlayer.firstName,
+                        lastName: this.selectedPlayer.lastName,
+                        won: false,
+                        taught: false
+                    }),
+                        this.selectedPlayer = {}
+                }
             }
         })
     </script>
