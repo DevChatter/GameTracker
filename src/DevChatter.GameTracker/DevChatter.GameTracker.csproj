@@ -17,4 +17,7 @@
     <ProjectReference Include="..\DevChatter.GameTracker.Core\DevChatter.GameTracker.Core.csproj" />
     <ProjectReference Include="..\DevChatter.GameTracker.Data.Ef\DevChatter.GameTracker.Data.Ef.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\GameRecord\" />
+  </ItemGroup>
 </Project>
