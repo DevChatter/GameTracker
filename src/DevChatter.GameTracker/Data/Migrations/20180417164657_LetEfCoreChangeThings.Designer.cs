@@ -11,26 +11,15 @@ using System;
 namespace DevChatter.GameTracker.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180417164657_LetEfCoreChangeThings")]
+    partial class LetEfCoreChangeThings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("DevChatter.GameTracker.Core.Model.Game", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Games");
-                });
 
             modelBuilder.Entity("DevChatter.GameTracker.Data.ApplicationUser", b =>
                 {
