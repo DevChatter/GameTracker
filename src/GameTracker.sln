@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevChatter.GameTracker", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevChatter.GameTracker.Core", "DevChatter.GameTracker.Core\DevChatter.GameTracker.Core.csproj", "{AD5A4CA1-014D-4F3E-97FD-933E1CE287F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevChatter.GameTracker.Data.Ef", "DevChatter.GameTracker.Data.Ef\DevChatter.GameTracker.Data.Ef.csproj", "{0D0A75C8-AFB4-4474-9DB3-030F0B47C7B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AD5A4CA1-014D-4F3E-97FD-933E1CE287F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD5A4CA1-014D-4F3E-97FD-933E1CE287F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD5A4CA1-014D-4F3E-97FD-933E1CE287F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D0A75C8-AFB4-4474-9DB3-030F0B47C7B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D0A75C8-AFB4-4474-9DB3-030F0B47C7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D0A75C8-AFB4-4474-9DB3-030F0B47C7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D0A75C8-AFB4-4474-9DB3-030F0B47C7B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
