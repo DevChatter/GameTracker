@@ -15,6 +15,8 @@ namespace DevChatter.GameTracker.Pages.Games
             _context = context;
         }
 
+        public string PageTitle { get; set; } = "Game List";
+
         public IList<Game> Game { get;set; }
 
         public async Task OnGetAsync()
