@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
 
-                <label asp-for="GameRecord.GameId" class="control-label"></label>
+                <label class="control-label">Game Played:</label>
 
                 <select v-model="gamePlayed">
                     <option v-for="game in games" v-bind:value="game">
@@ -22,11 +22,10 @@
                     </option>
                 </select>
                 <span>Selected: {{ gamePlayed.title }}</span>
-                <span asp-validation-for="GameRecord.GameId" class="text-danger"></span>
             </div>
             <div class="form-group">
 
-                <label asp-for="GameRecord.PlayerIds" class="control-label"></label>
+                <label class="control-label">Players in Game:</label>
 
                 <select v-model="selectedPlayer"
                         v-on:change="addNewPlayer"
@@ -40,10 +39,9 @@
                         {{ player.firstName }} {{ player.lastName }} <input type="checkbox" v-model="player.won"> <input type="checkbox" v-model="player.taught">
                     </li>
                 </ul>
-                <span asp-validation-for="GameRecord.PlayerIds" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input v-on:click="recordGamePlayed" class="btn btn-default" value="Record Game" />
             </div>
         </form>
     </div>
@@ -52,6 +50,7 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 
     <script>
         var app = new Vue({
@@ -86,10 +85,21 @@
                         taught: false
                     }),
                         this.selectedPlayer = {}
+                },
+                recordGamePlayed: function () {
+                    console.log('hi there!');
+                    $.post('/GameRecords/Index',
+                        {
+                            gameId: this.gamePlayed.id,
+                            playerIds: this.players.map(x => x.id),
+                            winnerIds: this.players.filter(x => x.won).map(x => x.id),
+                            teacherIds: this.players.filter(x => x.taught).map(x => x.id)
+                        },
+                        function (response) {
+                            console.log(response);
+                        });
                 }
             }
         })
     </script>
 }
-
-
