@@ -3,16 +3,17 @@ using DevChatter.GameTracker.Data.Ef;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading.Tasks;
+using DevChatter.GameTracker.Core.Data;
 
 namespace DevChatter.GameTracker.Pages.Games
 {
     public class CreateModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepository _repo;
 
-        public CreateModel(ApplicationDbContext context)
+        public CreateModel(IRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public IActionResult OnGet()
@@ -23,15 +24,14 @@ namespace DevChatter.GameTracker.Pages.Games
         [BindProperty]
         public Game Game { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Games.Add(Game);
-            await _context.SaveChangesAsync();
+            _repo.Create(Game);
 
             return RedirectToPage("./Index");
         }

@@ -1,34 +1,36 @@
-﻿using DevChatter.GameTracker.Core.Model;
-using DevChatter.GameTracker.Data.Ef;
+﻿using DevChatter.GameTracker.Core.Data;
+using DevChatter.GameTracker.Core.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using DevChatter.GameTracker.Core.Data.Specifications;
 
 namespace DevChatter.GameTracker.Pages.Games
 {
     public class EditModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepository _repo;
 
-        public EditModel(ApplicationDbContext context)
+        public EditModel(IRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
+
 
         [BindProperty]
         public Game Game { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public IActionResult OnGet(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Game = await _context.Games.SingleOrDefaultAsync(m => m.Id == id);
+            Game = _repo.Single(BaseEntityPolicy<Game>.ById(id.Value));
 
             if (Game == null)
             {
@@ -37,18 +39,16 @@ namespace DevChatter.GameTracker.Pages.Games
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Game).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                _repo.Update(Game);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -67,7 +67,7 @@ namespace DevChatter.GameTracker.Pages.Games
 
         private bool GameExists(Guid id)
         {
-            return _context.Games.Any(e => e.Id == id);
+            return _repo.Single(BaseEntityPolicy<Game>.ById(id)) != null;
         }
     }
 }

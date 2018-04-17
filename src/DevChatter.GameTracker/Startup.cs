@@ -1,3 +1,4 @@
+using DevChatter.GameTracker.Core.Data;
 using DevChatter.GameTracker.Data.Ef;
 using DevChatter.GameTracker.Services;
 using Microsoft.AspNetCore.Builder;
@@ -23,6 +24,8 @@ namespace DevChatter.GameTracker
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IRepository, EfCoreRepository>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

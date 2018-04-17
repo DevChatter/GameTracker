@@ -5,29 +5,32 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
+using DevChatter.GameTracker.Core.Data;
+using DevChatter.GameTracker.Core.Data.Specifications;
 
 namespace DevChatter.GameTracker.Pages.Games
 {
     public class DeleteModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepository _repo;
 
-        public DeleteModel(ApplicationDbContext context)
+        public DeleteModel(IRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
+
 
         [BindProperty]
         public Game Game { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public IActionResult OnGet(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Game = await _context.Games.SingleOrDefaultAsync(m => m.Id == id);
+            Game = _repo.Single(BaseEntityPolicy<Game>.ById(id.Value));
 
             if (Game == null)
             {
@@ -36,19 +39,18 @@ namespace DevChatter.GameTracker.Pages.Games
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(Guid? id)
+        public IActionResult OnPost(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Game = await _context.Games.FindAsync(id);
+            Game = _repo.Single(BaseEntityPolicy<Game>.ById(id.Value));
 
             if (Game != null)
             {
-                _context.Games.Remove(Game);
-                await _context.SaveChangesAsync();
+                _repo.Remove(Game);
             }
 
             return RedirectToPage("./Index");

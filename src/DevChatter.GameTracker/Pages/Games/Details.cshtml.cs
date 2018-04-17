@@ -5,28 +5,31 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
+using DevChatter.GameTracker.Core.Data;
+using DevChatter.GameTracker.Core.Data.Specifications;
 
 namespace DevChatter.GameTracker.Pages.Games
 {
     public class DetailsModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepository _repo;
 
-        public DetailsModel(ApplicationDbContext context)
+        public DetailsModel(IRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
+
 
         public Game Game { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public IActionResult OnGet(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Game = await _context.Games.SingleOrDefaultAsync(m => m.Id == id);
+            Game = _repo.Single(BaseEntityPolicy<Game>.ById(id.Value));
 
             if (Game == null)
             {
