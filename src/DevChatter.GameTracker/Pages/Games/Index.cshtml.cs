@@ -17,11 +17,11 @@ namespace DevChatter.GameTracker.Pages.Games
 
         public string PageTitle { get; set; } = "Game List";
 
-        public IList<Game> Game { get;set; }
+        public IList<Game> Games { get;set; }
 
         public void OnGet()
         {
-            Game = _repo.List(GamePolicy.All());
+            Games = _repo.List(GamePolicy.All());
         }
     }
 }
