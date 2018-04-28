@@ -1,4 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using DevChatter.GameTracker.Infra.Bgg.DTOs;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Xml.Serialization;
 
 namespace DevChatter.GameTracker.Infra.Bgg
 {
@@ -6,29 +12,35 @@ namespace DevChatter.GameTracker.Infra.Bgg
     {
         public List<(string, int)> GetPossibleGameIds(string gameTitle)
         {
+            var possibleGameIds = new List<(string, int)> { };
 
-            //using (var client = new HttpClient())
-            //{
-            //    string bggBaseUrl = "https://www.boardgamegeek.com/xmlapi2/";
+            using (var client = new HttpClient())
+            {
 
-            //    client.BaseAddress = new System.Uri(bggBaseUrl);
-            //    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("text/xml"));
+                string bggBaseUrl = "https://www.boardgamegeek.com/xmlapi2/";
 
-            //    foreach (var dbGame in gamesFromDb)
-            //    {
-            //        string apiSearchQuery = string.Format("search?query={0}&exact=1", dbGame.Title);
-            //        string boardGameGeekLink = "test";
+                client.BaseAddress = new Uri(bggBaseUrl);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/xml"));
 
-            //        var response = client.GetAsync(apiSearchQuery);
+                string apiSearchQuery = string.Format("search?query={0}&exact=1", gameTitle);
 
-            //        if (response.Result.IsSuccessStatusCode)
-            //        {
-            //            string content = response.Result.Content.ReadAsStringAsync().Result;
-            //        }
+                var result = client.GetAsync(apiSearchQuery).Result;
 
-            //    }
-            //}
-            return new List<(string, int)> { ("Not A Game", 12312412) };
+                if (result.IsSuccessStatusCode)
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(items));
+
+                    items boardgames = (items)xmlSerializer.Deserialize(result.Content.ReadAsStreamAsync().Result);
+
+                    var possibleGame = boardgames?.item?.FirstOrDefault();
+                    if (possibleGame != null)
+                    {
+                        possibleGameIds.Add((possibleGame.name.value, (int)possibleGame.id));
+                    }
+                }
+            }
+
+            return possibleGameIds;
         }
     }
 }
