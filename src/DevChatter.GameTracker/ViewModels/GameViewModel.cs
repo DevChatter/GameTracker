@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DevChatter.GameTracker.ViewModels
 {
@@ -6,6 +7,9 @@ namespace DevChatter.GameTracker.ViewModels
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
-        public string BoardGameGeekLink { get; set; }
+        [Display(Name = "BGG Link")]
+        public string BoardGameGeekLink => $"https://boardgamegeek.com/boardgame/{BoardGameGeekId}";
+        public string BoardGameGeekTitle { get; set; }
+        public int? BoardGameGeekId { get; set; }
     }
 }

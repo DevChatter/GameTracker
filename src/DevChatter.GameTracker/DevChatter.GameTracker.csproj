@@ -16,5 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\DevChatter.GameTracker.Core\DevChatter.GameTracker.Core.csproj" />
     <ProjectReference Include="..\DevChatter.GameTracker.Data.Ef\DevChatter.GameTracker.Data.Ef.csproj" />
+    <ProjectReference Include="..\DevChatter.GameTracker.Infra.Bgg\DevChatter.GameTracker.Infra.Bgg.csproj" />
   </ItemGroup>
 </Project>

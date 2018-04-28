@@ -7,5 +7,6 @@
         }
 
         public string Title { get; set; }
+        public int? BoardGameGeekId { get; set; }
     }
 }

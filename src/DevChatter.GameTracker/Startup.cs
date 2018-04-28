@@ -1,5 +1,6 @@
 using DevChatter.GameTracker.Core.Data;
 using DevChatter.GameTracker.Data.Ef;
+using DevChatter.GameTracker.Infra.Bgg;
 using DevChatter.GameTracker.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +27,7 @@ namespace DevChatter.GameTracker
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IRepository, EfCoreRepository>();
+            services.AddScoped<IGameDataService, GameDataService>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
