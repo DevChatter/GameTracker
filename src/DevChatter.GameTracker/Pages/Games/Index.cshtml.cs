@@ -33,10 +33,10 @@ namespace DevChatter.GameTracker.Pages.Games
                 string bggTitle = gameFromDb.Title;
                 int? bggId = gameFromDb.BoardGameGeekId;
 
-                if (!gameFromDb.BoardGameGeekId.HasValue)
-                {
-                    (bggTitle, bggId) = _gameDataService.GetPossibleGameIds(gameFromDb.Title).FirstOrDefault();
-                }
+                //if (!gameFromDb.BoardGameGeekId.HasValue)
+                //{
+                //    (bggTitle, bggId) = _gameDataService.GetPossibleGameIds(gameFromDb.Title).FirstOrDefault();
+                //}
 
                 var newGame = new GameViewModel
                 {

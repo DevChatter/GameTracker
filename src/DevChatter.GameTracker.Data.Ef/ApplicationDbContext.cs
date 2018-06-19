@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DevChatter.GameTracker.Data.Ef
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Game> Games { get; set; }
         public DbSet<Player> Players { get; set; }
