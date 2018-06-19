@@ -22,7 +22,7 @@ namespace DevChatter.GameTracker.Infra.Bgg
                 client.BaseAddress = new Uri(bggBaseUrl);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/xml"));
 
-                string apiSearchQuery = string.Format("search?query={0}", gameTitle);
+                string apiSearchQuery = $"search?query={gameTitle}";
 
                 var result = client.GetAsync(apiSearchQuery).Result;
 
