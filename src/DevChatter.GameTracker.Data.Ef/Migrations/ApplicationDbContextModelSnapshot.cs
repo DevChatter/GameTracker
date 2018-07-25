@@ -47,6 +47,24 @@ namespace DevChatter.GameTracker.Data.Ef.Migrations
                     b.ToTable("GameRecords");
                 });
 
+            modelBuilder.Entity("DevChatter.GameTracker.Core.Model.GameReview", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid?>("GameId");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("GameReviews");
+                });
+
             modelBuilder.Entity("DevChatter.GameTracker.Core.Model.Player", b =>
                 {
                     b.Property<Guid>("Id")
@@ -249,6 +267,13 @@ namespace DevChatter.GameTracker.Data.Ef.Migrations
                 });
 
             modelBuilder.Entity("DevChatter.GameTracker.Core.Model.GameRecord", b =>
+                {
+                    b.HasOne("DevChatter.GameTracker.Core.Model.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId");
+                });
+
+            modelBuilder.Entity("DevChatter.GameTracker.Core.Model.GameReview", b =>
                 {
                     b.HasOne("DevChatter.GameTracker.Core.Model.Game", "Game")
                         .WithMany()

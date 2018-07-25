@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DevChatter.GameTracker.Data.Ef.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180619201950_ASPNETCore2.1Migration")]
-    partial class ASPNETCore21Migration
+    [Migration("20180619202123_CreateGameReviewsTable")]
+    partial class CreateGameReviewsTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,24 @@ namespace DevChatter.GameTracker.Data.Ef.Migrations
                     b.HasIndex("GameId");
 
                     b.ToTable("GameRecords");
+                });
+
+            modelBuilder.Entity("DevChatter.GameTracker.Core.Model.GameReview", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid?>("GameId");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("GameReviews");
                 });
 
             modelBuilder.Entity("DevChatter.GameTracker.Core.Model.Player", b =>
@@ -251,6 +269,13 @@ namespace DevChatter.GameTracker.Data.Ef.Migrations
                 });
 
             modelBuilder.Entity("DevChatter.GameTracker.Core.Model.GameRecord", b =>
+                {
+                    b.HasOne("DevChatter.GameTracker.Core.Model.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId");
+                });
+
+            modelBuilder.Entity("DevChatter.GameTracker.Core.Model.GameReview", b =>
                 {
                     b.HasOne("DevChatter.GameTracker.Core.Model.Game", "Game")
                         .WithMany()
