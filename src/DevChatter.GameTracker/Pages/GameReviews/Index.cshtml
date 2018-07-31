@@ -14,22 +14,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GameReview[0].Rating)
+                @Html.DisplayNameFor(model => model.GameReviews[0].Rating)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GameReview[0].Text)
+                @Html.DisplayNameFor(model => model.GameReviews[0].ReviewText)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.GameReview) {
+@foreach (var item in Model.GameReviews) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Text)
+                @Html.DisplayFor(modelItem => item.ReviewText)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

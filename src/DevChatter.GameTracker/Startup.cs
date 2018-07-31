@@ -1,6 +1,9 @@
+using AutoMapper;
 using DevChatter.GameTracker.Core.Data;
+using DevChatter.GameTracker.Core.Model;
 using DevChatter.GameTracker.Data.Ef;
 using DevChatter.GameTracker.Infra.Bgg;
+using DevChatter.GameTracker.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -64,6 +67,13 @@ namespace DevChatter.GameTracker
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMissingTypeMaps = true;
+                cfg.CreateMap<GameReview, GameReviewViewModel>()
+                    .ForMember(x => x.ReviewText, c => c.MapFrom(src => src.Text));
+            });
 
             app.UseMvc();
         }
