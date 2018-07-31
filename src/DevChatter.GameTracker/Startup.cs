@@ -71,8 +71,20 @@ namespace DevChatter.GameTracker
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMissingTypeMaps = true;
+
                 cfg.CreateMap<GameReview, GameReviewViewModel>()
-                    .ForMember(x => x.ReviewText, c => c.MapFrom(src => src.Text));
+                    .ForMember(x => x.ReviewText,
+                        c => c.MapFrom(src => src.Text))
+                    .ForMember(x => x.ReviewerName,
+                        c => c.MapFrom(src => src.User.UserName));
+
+                cfg.CreateMap<Game, GameViewModel>()
+                    .ForMember(x => x.BoardGameGeekTitle,
+                        c => c.Ignore())
+                    .ForMember(x => x.BoardGameGeekId,
+                        c => c.Ignore())
+                    .ForMember(x => x.BoardGameGeekLink,
+                        c => c.Ignore());
             });
 
             app.UseMvc();
