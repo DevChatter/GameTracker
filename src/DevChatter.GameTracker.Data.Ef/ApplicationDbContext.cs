@@ -4,11 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DevChatter.GameTracker.Data.Ef
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Game> Games { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<GameRecord> GameRecords { get; set; }
+        public DbSet<GameReview> GameReviews { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
