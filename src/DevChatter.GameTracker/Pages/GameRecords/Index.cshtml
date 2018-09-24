@@ -25,7 +25,11 @@
             </div>
             <div class="form-group">
 
-                <label class="control-label">Players in Game:</label>
+                <label class="control-label">Choose Players:</label>
+                <input type="text" v-model="playersFilter" v-on:change="searchPlayers" placeholder="Ex: Brendan" />
+                <ul>
+                    <li v-for="(player, i) in filteredPlayers">{{player.firstName}} {{player.lastName}} <button v-on:click.stop="selectPlayer(i)">Add</button></li>
+                </ul>
 
                 <select v-model="selectedPlayer"
                         v-on:change="addNewPlayer"
@@ -34,14 +38,20 @@
                         {{ player.firstName }} {{ player.lastName }}
                     </option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Players in Game:</label>
                 <ul>
                     <li v-for="player in players">
-                        {{ player.firstName }} {{ player.lastName }} <input type="checkbox" v-model="player.won"> <input type="checkbox" v-model="player.taught">
+                        {{ player.firstName }} {{ player.lastName }} 
+                        <input type="checkbox" v-model="player.won"> 
+                        <input type="checkbox" v-model="player.taught">
                     </li>
                 </ul>
             </div>
             <div class="form-group">
-                <input v-on:click="recordGamePlayed" class="btn btn-default" value="Record Game" />
+                <input v-on:click="recordGamePlayed" class="btn btn-default" 
+                       value="Record Game" />
             </div>
         </form>
     </div>
@@ -59,6 +69,8 @@
                 gamePlayed: {},
                 selectedPlayer: {},
                 players: [],
+                playersFilter: '',
+                filteredPlayers: [],
                 allPlayers: [
                     { id: '1', firstName: 'John', lastName: 'Smith' },
                     { id: '2', firstName: 'John', lastName: 'Doe' },
@@ -76,6 +88,16 @@
                 ]
             },
             methods: {
+                searchPlayers: function() {
+                    console.log("Searching for " + this.playersFilter);
+                    // TODO: call web api controller
+                    this.filteredPlayers.push({ id: '11', firstName: 'Brendan', lastName: 'Smith' });
+
+                    this.playersFilter = '';
+                },
+                selectPlayer: function (i) {
+                    console.log(i);
+                },
                 addNewPlayer: function () {
                     this.players.push({
                         id: this.selectedPlayer.id,
@@ -84,7 +106,7 @@
                         won: false,
                         taught: false
                     }),
-                        this.selectedPlayer = {}
+                    this.selectedPlayer = {}
                 },
                 recordGamePlayed: function () {
                     console.log('hi there!');
