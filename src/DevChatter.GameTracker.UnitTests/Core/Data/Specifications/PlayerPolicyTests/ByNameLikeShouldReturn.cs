@@ -18,11 +18,11 @@ namespace DevChatter.GameTracker.UnitTests.Core.Data.Specifications.PlayerPolicy
             List<Player> players = GetTestPlayers();
 
             var predicate = PlayerPolicy.ByNameLike(filter).Criteria.Compile();
-            var filteredPlayes = players.Where(predicate).ToList();
+            var filteredPlayers = players.Where(predicate).ToList();
 
-            Assert.Equal(players.Count-1, filteredPlayes.Count);
+            Assert.Equal(players.Count-1, filteredPlayers.Count);
             Assert.Contains("Johnson", players.Select(x => x.LastName));
-            Assert.DoesNotContain("Johnson", filteredPlayes.Select(x => x.LastName));
+            Assert.DoesNotContain("Johnson", filteredPlayers.Select(x => x.LastName));
         }
 
         [Theory]
@@ -36,9 +36,9 @@ namespace DevChatter.GameTracker.UnitTests.Core.Data.Specifications.PlayerPolicy
             List<Player> players = GetTestPlayers();
 
             var predicate = PlayerPolicy.ByNameLike(filter).Criteria.Compile();
-            var filteredPlayes = players.Where(predicate).ToList();
+            var filteredPlayers = players.Where(predicate).ToList();
 
-            Assert.Equal(expectedFirstName, filteredPlayes.Single().FirstName);
+            Assert.Equal(expectedFirstName, filteredPlayers.Single().FirstName);
         }
 
         [Theory]
@@ -50,9 +50,9 @@ namespace DevChatter.GameTracker.UnitTests.Core.Data.Specifications.PlayerPolicy
             List<Player> players = GetTestPlayers();
 
             var predicate = PlayerPolicy.ByNameLike(filter).Criteria.Compile();
-            var filteredPlayes = players.Where(predicate).ToList();
+            var filteredPlayers = players.Where(predicate).ToList();
 
-            Assert.Empty(filteredPlayes);
+            Assert.Empty(filteredPlayers);
         }
 
         private List<Player> GetTestPlayers()
