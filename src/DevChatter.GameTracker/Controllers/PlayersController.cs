@@ -34,14 +34,9 @@ namespace DevChatter.GameTracker.Controllers
                 return BadRequest(ModelState);
             }
 
-            var player = _repository.List(PlayerPolicy.ByNameLike(filter));
+            var players = _repository.List(PlayerPolicy.ByNameLike(filter));
 
-            if (player == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(player);
+            return Ok(players);
         }
 
         // POST: api/Players
