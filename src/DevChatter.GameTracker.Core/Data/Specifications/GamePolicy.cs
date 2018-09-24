@@ -21,7 +21,7 @@ namespace DevChatter.GameTracker.Core.Data.Specifications
 
         public static GamePolicy ByTitleLike(string filter)
         {
-            filter = filter.ToLowerInvariant();
+            filter = filter.ToLowerInvariant().Trim();
             return new GamePolicy(p => p.Title.ToLowerInvariant().Contains(filter));
         }
     }
