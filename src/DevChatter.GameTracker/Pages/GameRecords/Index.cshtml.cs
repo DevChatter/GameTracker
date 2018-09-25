@@ -1,7 +1,6 @@
-﻿using System;
-using DevChatter.GameTracker.ViewModels;
-using Microsoft.AspNetCore.Mvc;
+﻿using DevChatter.GameTracker.ViewModels;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 
 namespace DevChatter.GameTracker.Pages.GameRecords
 {

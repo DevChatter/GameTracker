@@ -27,9 +27,12 @@
 
                 <label class="control-label">Choose Players:</label>
                 <input type="text" v-model="playersFilter" v-on:change="searchPlayers" placeholder="Ex: Brendan" />
-                <ul>
-                    <li v-for="(player, i) in filteredPlayers">{{player.firstName}} {{player.lastName}} <button v-on:click.stop="selectPlayer(i)">Add</button></li>
-                </ul>
+                <div class="row">
+                    <div class="col-xs-4" v-for="(player, i) in filteredPlayers">
+                        {{player.firstName}} {{player.lastName}}
+                        <button v-on:click.stop="selectPlayer(i)">Add</button>
+                    </div>
+                </div>
 
                 <select v-model="selectedPlayer"
                         v-on:change="addNewPlayer"
