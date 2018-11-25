@@ -12,8 +12,4 @@
     <ProjectReference Include="..\DevChatter.GameTracker.Core\DevChatter.GameTracker.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>
