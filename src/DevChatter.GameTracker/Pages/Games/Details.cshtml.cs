@@ -1,12 +1,8 @@
-﻿using DevChatter.GameTracker.Core.Model;
-using DevChatter.GameTracker.Data.Ef;
+﻿using DevChatter.GameTracker.Core.Data;
+using DevChatter.GameTracker.Core.Data.Specifications;
+using DevChatter.GameTracker.Core.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Threading.Tasks;
-using DevChatter.GameTracker.Core.Data;
-using DevChatter.GameTracker.Core.Data.Specifications;
 
 namespace DevChatter.GameTracker.Pages.Games
 {
@@ -22,7 +18,7 @@ namespace DevChatter.GameTracker.Pages.Games
 
         public Game Game { get; set; }
 
-        public IActionResult OnGet(Guid? id)
+        public IActionResult OnGet(int? id)
         {
             if (id == null)
             {

@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DevChatter.GameTracker.Core.Model;
+using DevChatter.GameTracker.Data.Ef;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using DevChatter.GameTracker.Core.Model;
-using DevChatter.GameTracker.Data.Ef;
+using System;
+using System.Threading.Tasks;
 
 namespace DevChatter.GameTracker.Pages.GameReviews
 {
     public class DeleteModel : PageModel
     {
-        private readonly DevChatter.GameTracker.Data.Ef.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DeleteModel(DevChatter.GameTracker.Data.Ef.ApplicationDbContext context)
+        public DeleteModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -22,7 +20,7 @@ namespace DevChatter.GameTracker.Pages.GameReviews
         [BindProperty]
         public GameReview GameReview { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {

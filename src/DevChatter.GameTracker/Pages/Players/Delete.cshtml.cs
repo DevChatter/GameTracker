@@ -1,4 +1,5 @@
 ﻿using DevChatter.GameTracker.Core.Model;
+using DevChatter.GameTracker.Data.Ef;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -9,9 +10,9 @@ namespace DevChatter.GameTracker.Pages.Players
 {
     public class DeleteModel : PageModel
     {
-        private readonly DevChatter.GameTracker.Data.Ef.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DeleteModel(DevChatter.GameTracker.Data.Ef.ApplicationDbContext context)
+        public DeleteModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -19,7 +20,7 @@ namespace DevChatter.GameTracker.Pages.Players
         [BindProperty]
         public Player Player { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {

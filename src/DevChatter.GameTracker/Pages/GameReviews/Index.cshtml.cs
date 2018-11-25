@@ -1,14 +1,14 @@
-﻿using System;
+﻿using AutoMapper;
 using DevChatter.GameTracker.Core.Model;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
 using DevChatter.GameTracker.Data.Ef;
 using DevChatter.GameTracker.ViewModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DevChatter.GameTracker.Pages.GameReviews
 {
@@ -29,7 +29,7 @@ namespace DevChatter.GameTracker.Pages.GameReviews
 
             //Hack!!!!
             gameReviews.Add(new GameReview {
-                Id = Guid.NewGuid(),
+                Id = new Random().Next(100,1000),
                 Text = "Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here. Hacked in here.",
                 Rating = 1337,
                 Game = new Game { Title = "Look At Automapper"},
