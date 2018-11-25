@@ -1,8 +1,9 @@
-﻿using DevChatter.GameTracker.Core.Model;
-using DevChatter.GameTracker.Data.Ef;
+﻿using DevChatter.GameTracker.Data.Ef;
+using DevChatter.GameTracker.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading.Tasks;
+using DevChatter.GameTracker.Core.Model;
 
 namespace DevChatter.GameTracker.Pages.Players
 {

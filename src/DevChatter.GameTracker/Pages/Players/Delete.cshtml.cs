@@ -36,7 +36,7 @@ namespace DevChatter.GameTracker.Pages.Players
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(Guid? id)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {

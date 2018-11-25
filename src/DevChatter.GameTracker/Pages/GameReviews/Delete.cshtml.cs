@@ -3,7 +3,6 @@ using DevChatter.GameTracker.Data.Ef;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Threading.Tasks;
 
 namespace DevChatter.GameTracker.Pages.GameReviews
@@ -36,7 +35,7 @@ namespace DevChatter.GameTracker.Pages.GameReviews
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(Guid? id)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {

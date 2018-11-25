@@ -5,7 +5,7 @@ namespace DevChatter.GameTracker.ViewModels
 {
     public class GameReviewViewModel
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         [DisplayName("Reviewer")]
         public string ReviewerName { get; set; }
         public int Rating { get; set; }

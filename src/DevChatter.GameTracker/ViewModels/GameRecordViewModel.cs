@@ -5,9 +5,9 @@ namespace DevChatter.GameTracker.ViewModels
 {
     public class GameRecordViewModel
     {
-        public Guid GameId { get; set; }
-        public List<Guid> PlayerIds { get; set; }
-        public List<Guid> WinnerIds { get; set; }
-        public List<Guid> TeacherIds { get; set; }
+        public int GameId { get; set; }
+        public List<int> PlayerIds { get; set; }
+        public List<int> WinnerIds { get; set; }
+        public List<int> TeacherIds { get; set; }
     }
 }
