@@ -4,7 +4,6 @@ using DevChatter.GameTracker.Infra.Bgg;
 using DevChatter.GameTracker.ViewModels;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DevChatter.GameTracker.Pages.Games
 {

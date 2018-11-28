@@ -1,4 +1,5 @@
-﻿
+﻿using Microsoft.AspNetCore.Identity;
+
 namespace DevChatter.GameTracker.Core.Model
 {
     public class GameReview : BaseEntity
@@ -6,5 +7,6 @@ namespace DevChatter.GameTracker.Core.Model
         public Game Game { get; set; }
         public int Rating { get; set; }
         public string Text { get; set; }
+        public IdentityUser User { get; set; }
     }
 }

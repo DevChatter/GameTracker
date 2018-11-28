@@ -1,4 +1,5 @@
 ﻿using DevChatter.GameTracker.Core.Model;
+using DevChatter.GameTracker.Data.Ef;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -8,9 +9,9 @@ namespace DevChatter.GameTracker.Pages.Players
 {
     public class IndexModel : PageModel
     {
-        private readonly DevChatter.GameTracker.Data.Ef.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public IndexModel(DevChatter.GameTracker.Data.Ef.ApplicationDbContext context)
+        public IndexModel(ApplicationDbContext context)
         {
             _context = context;
         }

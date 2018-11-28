@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevChatter.GameTracker.Data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevChatter.GameTracker.Infra.Bgg", "DevChatter.GameTracker.Infra.Bgg\DevChatter.GameTracker.Infra.Bgg.csproj", "{3E3413CC-6F52-45E7-AC5B-B472E52DDB80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevChatter.GameTracker", "DevChatter.GameTracker\DevChatter.GameTracker.csproj", "{848E35D0-E09C-4ECE-BC73-3E26C3A06F7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevChatter.GameTracker", "DevChatter.GameTracker\DevChatter.GameTracker.csproj", "{848E35D0-E09C-4ECE-BC73-3E26C3A06F7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevChatter.GameTracker.UnitTests", "DevChatter.GameTracker.UnitTests\DevChatter.GameTracker.UnitTests.csproj", "{C0551D25-1EEE-4C69-9556-CD498599200A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{848E35D0-E09C-4ECE-BC73-3E26C3A06F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{848E35D0-E09C-4ECE-BC73-3E26C3A06F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{848E35D0-E09C-4ECE-BC73-3E26C3A06F7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0551D25-1EEE-4C69-9556-CD498599200A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0551D25-1EEE-4C69-9556-CD498599200A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0551D25-1EEE-4C69-9556-CD498599200A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0551D25-1EEE-4C69-9556-CD498599200A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

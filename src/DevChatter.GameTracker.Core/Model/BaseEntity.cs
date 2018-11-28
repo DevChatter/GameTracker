@@ -4,6 +4,6 @@ namespace DevChatter.GameTracker.Core.Model
 {
     public abstract class BaseEntity
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
     }
 }

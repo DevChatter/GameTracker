@@ -1,6 +1,4 @@
-﻿using System;
-using DevChatter.GameTracker.ViewModels;
-using Microsoft.AspNetCore.Mvc;
+﻿using DevChatter.GameTracker.ViewModels;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DevChatter.GameTracker.Pages.GameRecords
@@ -9,7 +7,7 @@ namespace DevChatter.GameTracker.Pages.GameRecords
     {
         public void OnPost(GameRecordViewModel gameRecord)
         {
-            Guid gameRecordGameId = gameRecord.GameId;
+            int gameRecordGameId = gameRecord.GameId;
         }
     }
 }

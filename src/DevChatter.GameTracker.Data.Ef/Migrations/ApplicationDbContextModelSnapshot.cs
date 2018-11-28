@@ -15,14 +15,15 @@ namespace DevChatter.GameTracker.Data.Ef.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.0-rtm-30799")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("DevChatter.GameTracker.Core.Model.Game", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("BoardGameGeekId");
 
@@ -35,10 +36,11 @@ namespace DevChatter.GameTracker.Data.Ef.Migrations
 
             modelBuilder.Entity("DevChatter.GameTracker.Core.Model.GameRecord", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid?>("GameId");
+                    b.Property<int?>("GameId");
 
                     b.HasKey("Id");
 
@@ -49,26 +51,32 @@ namespace DevChatter.GameTracker.Data.Ef.Migrations
 
             modelBuilder.Entity("DevChatter.GameTracker.Core.Model.GameReview", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid?>("GameId");
+                    b.Property<int?>("GameId");
 
                     b.Property<int>("Rating");
 
                     b.Property<string>("Text");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("GameId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("GameReviews");
                 });
 
             modelBuilder.Entity("DevChatter.GameTracker.Core.Model.Player", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("FirstName");
 
@@ -81,12 +89,13 @@ namespace DevChatter.GameTracker.Data.Ef.Migrations
 
             modelBuilder.Entity("DevChatter.GameTracker.Core.Model.PlayRecord", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid?>("GameRecordId");
+                    b.Property<int?>("GameRecordId");
 
-                    b.Property<Guid?>("PlayerId");
+                    b.Property<int?>("PlayerId");
 
                     b.Property<bool>("Taught");
 
@@ -278,6 +287,10 @@ namespace DevChatter.GameTracker.Data.Ef.Migrations
                     b.HasOne("DevChatter.GameTracker.Core.Model.Game", "Game")
                         .WithMany()
                         .HasForeignKey("GameId");
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("DevChatter.GameTracker.Core.Model.PlayRecord", b =>

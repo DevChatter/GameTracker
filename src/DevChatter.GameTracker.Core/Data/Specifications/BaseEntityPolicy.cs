@@ -1,6 +1,6 @@
-﻿using System;
+﻿using DevChatter.GameTracker.Core.Model;
+using System;
 using System.Linq.Expressions;
-using DevChatter.GameTracker.Core.Model;
 
 namespace DevChatter.GameTracker.Core.Data.Specifications
 {
@@ -19,7 +19,7 @@ namespace DevChatter.GameTracker.Core.Data.Specifications
             return new BaseEntityPolicy<T>(x => true);
         }
 
-        public static BaseEntityPolicy<T> ById(Guid id)
+        public static BaseEntityPolicy<T> ById(int id)
         {
             return new BaseEntityPolicy<T>(x => x.Id == id);
         }

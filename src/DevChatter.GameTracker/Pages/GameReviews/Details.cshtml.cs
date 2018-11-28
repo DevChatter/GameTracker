@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DevChatter.GameTracker.Core.Model;
+using DevChatter.GameTracker.Data.Ef;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using DevChatter.GameTracker.Core.Model;
-using DevChatter.GameTracker.Data.Ef;
+using System.Threading.Tasks;
 
 namespace DevChatter.GameTracker.Pages.GameReviews
 {
     public class DetailsModel : PageModel
     {
-        private readonly DevChatter.GameTracker.Data.Ef.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DetailsModel(DevChatter.GameTracker.Data.Ef.ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context)
         {
             _context = context;
         }
 
         public GameReview GameReview { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
