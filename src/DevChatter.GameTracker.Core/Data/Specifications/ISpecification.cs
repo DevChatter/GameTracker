@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevChatter.GameTracker.Core.Model;
+using System;
 using System.Linq.Expressions;
 
 namespace DevChatter.GameTracker.Core.Data.Specifications

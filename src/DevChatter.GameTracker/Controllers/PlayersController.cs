@@ -1,9 +1,9 @@
 ﻿using DevChatter.GameTracker.Core.Data;
+using DevChatter.GameTracker.Core.Data.Specifications;
 using DevChatter.GameTracker.Core.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DevChatter.GameTracker.Core.Data.Specifications;
 
 namespace DevChatter.GameTracker.Controllers
 {

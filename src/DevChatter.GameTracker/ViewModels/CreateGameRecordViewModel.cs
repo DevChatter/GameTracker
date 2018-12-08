@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DevChatter.GameTracker.ViewModels
 {
-    public class GameRecordViewModel
+    public class CreateGameRecordViewModel
     {
         public int GameId { get; set; }
+        public DateTime EventDate { get; set; }
         public List<int> PlayerIds { get; set; }
         public List<int> WinnerIds { get; set; }
         public List<int> TeacherIds { get; set; }
