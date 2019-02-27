@@ -64,7 +64,7 @@ namespace DevChatter.GameTracker.Pages.Games
 
         private bool GameExists(int id)
         {
-            return _repo.Single(GamePolicy.ById(id)) != null;
+            return _repo.Exists(GamePolicy.ById(id));
         }
     }
 }
