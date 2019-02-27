@@ -1,36 +1,36 @@
-﻿using DevChatter.GameTracker.Core.Model;
-using DevChatter.GameTracker.Data.Ef;
+﻿using DevChatter.GameTracker.Core.Data;
+using DevChatter.GameTracker.Core.Data.Specifications;
+using DevChatter.GameTracker.Core.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 
 namespace DevChatter.GameTracker.Pages.Players
 {
     public class DetailsModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepository _repo;
 
-        public DetailsModel(ApplicationDbContext context)
+        public DetailsModel(IRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public Player Player { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public IActionResult OnGet(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Player = await _context.Players.SingleOrDefaultAsync(m => m.Id == id);
+            Player = _repo.Single(PlayerPolicy.ById(id.Value));
 
             if (Player == null)
             {
                 return NotFound();
             }
+
             return Page();
         }
     }

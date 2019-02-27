@@ -1,26 +1,27 @@
-﻿using DevChatter.GameTracker.Core.Model;
-using DevChatter.GameTracker.Data.Ef;
+﻿using DevChatter.GameTracker.Core.Data;
+using DevChatter.GameTracker.Core.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace DevChatter.GameTracker.Pages.Players
 {
     public class IndexModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepository _repo;
 
-        public IndexModel(ApplicationDbContext context)
+        public IndexModel(IRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public IList<Player> Player { get;set; }
 
-        public async Task OnGetAsync()
+        public IActionResult OnGet()
         {
-            Player = await _context.Players.ToListAsync();
+            Player = _repo.List<Player>();
+
+            return Page();
         }
     }
 }

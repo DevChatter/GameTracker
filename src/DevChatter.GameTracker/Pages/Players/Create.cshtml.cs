@@ -1,19 +1,18 @@
-﻿using DevChatter.GameTracker.Data.Ef;
+﻿using DevChatter.GameTracker.Core.Data;
 using DevChatter.GameTracker.ViewModels;
+using DevChatter.GameTracker.ViewModels.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Threading.Tasks;
-using DevChatter.GameTracker.Core.Model;
 
 namespace DevChatter.GameTracker.Pages.Players
 {
     public class CreateModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepository _repo;
 
-        public CreateModel(ApplicationDbContext context)
+        public CreateModel(IRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public IActionResult OnGet()
@@ -22,17 +21,16 @@ namespace DevChatter.GameTracker.Pages.Players
         }
 
         [BindProperty]
-        public Player Player { get; set; }
+        public PlayerCreateModel Player { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Players.Add(Player);
-            await _context.SaveChangesAsync();
+            _repo.Create(Player.ToModel());
 
             return RedirectToPage("./Index");
         }

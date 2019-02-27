@@ -6,6 +6,7 @@ namespace DevChatter.GameTracker.Core.Data
 {
     public interface IRepository
     {
+        bool Exists<T>(ISpecification<T> spec) where T : BaseEntity;
         T Single<T>(ISpecification<T> spec) where T : BaseEntity;
         List<T> List<T>(ISpecification<T> spec = null) where T : BaseEntity;
         T Create<T>(T dataItem) where T : BaseEntity;

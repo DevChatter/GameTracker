@@ -4,6 +4,8 @@ using DevChatter.GameTracker.Core.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DevChatter.GameTracker.ViewModels;
+using DevChatter.GameTracker.ViewModels.Extensions;
 
 namespace DevChatter.GameTracker.Controllers
 {
@@ -41,16 +43,16 @@ namespace DevChatter.GameTracker.Controllers
 
         // POST: api/Players
         [HttpPost]
-        public async Task<IActionResult> PostPlayer([FromBody] Player player)
+        public async Task<IActionResult> PostPlayer([FromBody] PlayerCreateModel player)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            player = _repository.Create(player);
+            var model = _repository.Create(player.ToModel());
 
-            return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
+            return CreatedAtAction("GetPlayer", new { id = model.Id }, player);
         }
     }
 }

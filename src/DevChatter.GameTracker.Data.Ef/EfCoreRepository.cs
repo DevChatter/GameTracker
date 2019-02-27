@@ -16,6 +16,11 @@ namespace DevChatter.GameTracker.Data.Ef
             _db = db;
         }
 
+        public bool Exists<T>(ISpecification<T> spec) where T : BaseEntity
+        {
+            return _db.Set<T>().Any(spec.Criteria);
+        }
+
         public T Single<T>(ISpecification<T> spec) where T : BaseEntity
         {
             return _db.Set<T>().SingleOrDefault(spec.Criteria);
