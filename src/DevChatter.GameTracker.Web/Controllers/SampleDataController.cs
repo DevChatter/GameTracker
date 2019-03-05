@@ -9,36 +9,48 @@ namespace DevChatter.GameTracker.Web.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
-        private static string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         [HttpGet("[action]")]
-        public IEnumerable<WeatherForecast> WeatherForecasts()
+        public IEnumerable<Game> Games()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            });
+            return new [] {
+                new Game { Title = "Pandemic", },
+                new Game { Title = "Dominion", },
+                new Game { Title = "Dominion: Intrigue", },
+                new Game { Title = "7 Wonders", },
+                new Game { Title = "Die Macher", },
+                new Game { Title = "Puerto Rico", },
+                new Game { Title = "Race for the Galaxy", },
+                new Game { Title = "Betrayal at House on the Hill", },
+                new Game { Title = "Can't Stop", },
+                new Game { Title = "Battlestar Galactica", },
+                new Game { Title = "The Resistance", },
+                new Game { Title = "Chicago Express", },
+                new Game { Title = "Railways of the World", },
+            };
         }
 
-        public class WeatherForecast
+        [HttpGet("[action]")]
+        public IEnumerable<Player> Players()
         {
-            public string DateFormatted { get; set; }
-            public int TemperatureC { get; set; }
-            public string Summary { get; set; }
+            return new [] {
+                new Player { FirstName = "Brendan", LastName = "Enrick", IsMember = true },
+                new Player { FirstName = "Steve", LastName = "Smith", IsMember = true },
+                new Player { FirstName = "William", LastName = "Whaties", IsMember = false },
+                new Player { FirstName = "Jeffrey", LastName = "Jones", IsMember = false },
+                new Player { FirstName = "Gerald", LastName = "George", IsMember = true },
+            };
+        }
 
-            public int TemperatureF
-            {
-                get
-                {
-                    return 32 + (int)(TemperatureC / 0.5556);
-                }
-            }
+        public class Game
+        {
+            public string Title { get; set; }
+        }
+
+        public class Player
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public bool IsMember { get; set; }
         }
     }
 }

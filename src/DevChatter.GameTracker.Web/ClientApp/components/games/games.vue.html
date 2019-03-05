@@ -1,0 +1,24 @@
+<template>
+    <div>
+        <h1>All Games</h1>
+
+        <p>All Games in the Library.</p>
+
+        <table v-if="games.length" class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in games">
+                    <td>{{ item.title }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p v-else><em>Loading...</em></p>
+    </div>
+</template>
+
+<script src="./games.ts"></script>

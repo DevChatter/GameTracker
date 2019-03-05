@@ -1,0 +1,28 @@
+<template>
+    <div>
+        <h1>All Players</h1>
+
+        <p>All people in the system.</p>
+
+        <table v-if="players.length" class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Is Annual Member</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in players">
+                    <td>{{ item.firstName }}</td>
+                    <td>{{ item.lastName }}</td>
+                    <td>{{ item.isMember }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p v-else><em>Loading...</em></p>
+    </div>
+</template>
+
+<script src="./players.ts"></script>
