@@ -32,14 +32,23 @@ namespace DevChatter.GameTracker.Web.Controllers
         [HttpGet("[action]")]
         public IEnumerable<Player> Players()
         {
-            return new [] {
-                new Player { FirstName = "Brendan", LastName = "Enrick", IsMember = true },
-                new Player { FirstName = "Steve", LastName = "Smith", IsMember = true },
-                new Player { FirstName = "William", LastName = "Whaties", IsMember = false },
-                new Player { FirstName = "Jeffrey", LastName = "Jones", IsMember = false },
-                new Player { FirstName = "Gerald", LastName = "George", IsMember = true },
-            };
+            return _players;
         }
+
+        [HttpGet("[action]/{id}")]
+        public Player Players(int id)
+        {
+            return _players.SingleOrDefault(p => p.Id == id);
+        }
+
+        private Player[] _players = new[] {
+                new Player { Id = 1, FirstName = "Brendan", LastName = "Enrick", IsMember = true },
+                new Player { Id = 2, FirstName = "Steve", LastName = "Smith", IsMember = true },
+                new Player { Id = 3, FirstName = "William", LastName = "Whaties", IsMember = false },
+                new Player { Id = 4, FirstName = "Jeffrey", LastName = "Jones", IsMember = false },
+                new Player { Id = 5, FirstName = "Gerald", LastName = "George", IsMember = true },
+            };
+
 
         public class Game
         {
@@ -48,6 +57,7 @@ namespace DevChatter.GameTracker.Web.Controllers
 
         public class Player
         {
+            public int Id { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public bool IsMember { get; set; }

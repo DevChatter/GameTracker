@@ -1,3 +1,6 @@
+import BModal from 'bootstrap-vue/es/components/modal/modal'
+Vue.component('b-modal', BModal)
+
 <template>
     <div>
         <h1>All Players</h1>
@@ -10,6 +13,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Is Annual Member</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -17,11 +21,29 @@
                     <td>{{ item.firstName }}</td>
                     <td>{{ item.lastName }}</td>
                     <td>{{ item.isMember }}</td>
+                    <td><button @click="edit(item.id)" data-toggle="modal" data-target="#editModal">Edit</button></td>
                 </tr>
             </tbody>
         </table>
 
         <p v-else><em>Loading...</em></p>
+
+        <div class="modal fade" id="editModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Edit Player - {{editPlayer.firstName}} {{editPlayer.lastName}}</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Put fields here.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
 </template>
 
